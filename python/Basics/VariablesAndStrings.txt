@@ -1,0 +1,80 @@
+####Variables#####
+- snake_case for variable
+- CAPITAL_SNAKE_CASE refers to constants (eg: PI = 3.1415)
+- UpperCamelCase refers to a class
+- _no_touchy_ variables that start and end with two underscores are called "dunder" for Double UNDERscore, are supposed to be private or left alone
+- !!Never use reserved data types key word as a variable name!!
+
+####Date Types###
+- bool => True or False
+- int => integer 1,2 or 3
+- str => string "Nana"
+- list => array [1,2,3]
+- dict => key: value pairs {"Nana": "pineapple", "Juno": "cat"}
+
+- None = nothing, nil, null => 'NoneType'
+
+- to check datatype: type(input_what_you_want_to_check_here)
+
+- Escape sequence: to make a new line or skip the ' or " by using "\"
+- for \ to show up properly => \\ instead of a single \
+
+#####String Concatenation#####
+    str_one = "hello"
+    str_two = "world"
+    str_three = str_one + " " + str_two => "hello world"
+    name = "nana"
+    name += " lau"
+    => name = "nana lau"
+
+#####Formatting Strings#####
+- interpolate variables: F-Strings
+    guess = 8
+    name = "nana"
+    
+    print(f"your guess of {guess} was incorrect!")
+    => your guess of 8 was incorrect!
+    
+    print(f"{name}, you guess of {guess + 1} was incorrect!")
+    => nana, your guess of 9 was incorrect!
+
+- the old but accepted ways of doing this: .format()
+    fruit = "Banana"
+    ripeness = "unripe"
+
+    print("The {} is {}.".format(fruit, ripeness))
+    => The Banana is unripe.
+
+    first = "nana"
+    last = "lau"
+
+    formatted = "First Name: {}, Last Name: {}".format(first, last)
+    print(formatted)
+    => "First Name: nana, Last Name: lau"
+
+#####String Indexes#####
+- "lol"[0] => 'l'
+- name = "Chuck"
+    name[0] => 'C'
+    name[-1] => 'k'
+
+#####Converting Data Types#####
+- In string interpolation, data types are implicitly converted into string form with F-Strings
+- We can also explicitly convert variables by using the name of the built-in type as a function
+    - decimal = 12.5464565874
+        integer = int(decimal) => 12
+    
+    - my_list = [1, 2, 3]
+        my_list_as_a_string = str(my_list) => "[1, 2, 3]"
+
+#####Making a Converter#####
+- Some useful functions: 
+    - some_variable = input()  => to get the input from client
+    - round(thing to round, how many decimal points)
+
+
+
+
+
+
+
