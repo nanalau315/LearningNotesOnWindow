@@ -1,0 +1,62 @@
+Git Core - From Intro to Git to Merging
+
+#####Basic Info About Git#####
+- Git - The world's most popular Version Control System(VCS)
+- Version Control is software that tracks and manages changes to files over time.
+- Other well known version control system include Subversion, CVS, and Mercurial
+- Git != Github
+
+#####Configuring Git Name and Email#####
+> git config --global user.name "Nana Lau"
+> git config --global user.email nanalau315@hotmail.com
+
+#####GitKraken as a Git GUI#####
+- I am probably not going to use it...
+
+#####Basic Git command#####
+> git status => gives information on the current status of a git repository and its content
+> git inti => initialize empty git repository in your desire folder so git can keep track of it as a whole
+> git add <filename> <filename2> => picked out the files that you worked on and stage them
+> git add . => will stage all modified or newly created files at the same time
+> git commit -m <"commit message"> => will commit all staged changes with the commit message that you entered, which summarizes the changes and work snapshotted in the commit.
+> git log => a log of all the changes thats made in the repository
+
+#####The mysterious .git folder#####
+- it is the history of git, thats why it is hidden and you should never mess with it (unless if you want to remove the repository status completely, then you can go ahead and delete it)
+
+#####A Common Early Git Mistake#####
+- DO NOT INIT A  REPO INSIDE OF A REPO!!!
+- do a git status if you are unsure if you are inside a git repository
+
+#####Atomic Commits#####
+- a commit should emcompass a single feature, change, or fix. Try to keep each commit focused on a single thing. Which makes the project much easier to undo or rollback changes later on. It will also make your code much easier to review.
+
+#####Commit Messages in Present or Past Tense?#####
+- in big collaboration projects, Present tense will a more of a convention to follow. but in personal project, it doesn't really matter as it is more of the personaly preference
+
+#####A Closer Look at the Git Log Command#####
+- Commit formatting
+    > git log --oneline => a shorthand for "--pretty=oneline --abbrev-commit" used together
+    - this is very useful when there is so much commit and you are just trying to find a single commmit with the first line of each commit
+    - there are many more to explore in the git docs!
+
+#####Amending Commits#####
+- when you realized you forgot to include a file or there might be a typo in the commit message, you can "redo" the previous commit using the --amend option
+- the process:
+    > git commit -m "some commit"
+    > git add <filename>
+    > git commit --amend
+    > edit your commit in VCSode and then close edit commit file
+
+#####Ignoring Files with .gitignore#####
+- We can tell Git which files and directories to ignore in a given repository, using a .gitignore file. This is useful for files you know you NEVER want to commit, including:
+    - Secrets, API keys, credentials, etc.
+    - Operating System files (.DS_Store on Mac)
+    - Log files
+    - Dependencies and Packages
+- where to put the .gitignore file? you can create it th eroot of a repository. Inside the file, we can write pattterns to tell Git which files and folders to ignore:
+    - .DS_Store will ignore files named .DS_Store
+    - folderName/ will ignore an entire directory
+    - *.log will ignore any files with the .log extension
+    - a really good website to use to see what should be include in the gitignore file for each and different language is toptal.com/developers/gitignore. you can just type what kind of project you are working on, then copy and paste the list into the gitignore file.
+
