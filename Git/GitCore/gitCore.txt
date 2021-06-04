@@ -60,7 +60,7 @@ Git Core - From Intro to Git to Merging
         - *.log will ignore any files with the .log extension
         - a really good website to use to see what should be include in the gitignore file for each and different language is toptal.com/developers/gitignore. you can just type what kind of project you are working on, then copy and paste the list into the gitignore file.
 
-##### Working with Branches #####
+##### Working with Branches ##### (Section 6)
     - In git, we are always working on a branch, the default branch name is usually master.
     - HEAD is a pointer that refers to the current "location" in your repository. It points to a particular branch reference, or the latest commit on a particular branch. (what I am checking out on). Each tip of a branch will have a head, which points to the latest commit hash on that particulat branch (HEAD is like a bookmark on each branch) 
         - refs/heads/<branch-name> => will hold the hash of the latest commit
@@ -68,7 +68,9 @@ Git Core - From Intro to Git to Merging
     - where you branch from is very important and make a really big difference. so before you branch, please make sure where you are at is where you want to branch off from.
     
     > git branch => to view your existing branches.
+    > git branch -v => show you all the branch with the tip of the branch and also the last commit.
     > git branch <branch-name> => to make a new branch based upon the current head (this only create the branch, it doesn't switch you to that new branch you just create, which means the head stays the same)
+    
     > git switch <branch-name> => to switch to the new branch that you create. 
     > git checkout <branch-name> => also switches you to another branch, but also do a lot more like restore working tree files.
     > git switch -c <branch-name> => will create a new branch AND switch you to the newly created branch all on one go. (-c as short for create)
@@ -80,3 +82,24 @@ Git Core - From Intro to Git to Merging
     > git branch -D <branch-name> => allow deleting the branch irrespective of its merged status. (Make sure you know what you are doing before using this command)
     > git branch -m <new-branch-name> => rename the current branch you are currently on
 
+##### Merging ##### (Section 7)
+    - merging concepts: 
+        - we merge branches, not specific commits
+        - we always merge to the current HEAD branch
+    - merging steps:
+        1. switch to or checkout the branch you want to merge the changes into (the receiving branch)
+            > git switch master/main
+
+        2. use the git merge command to merge changes from a specific branch into the current branch.
+            > git merge <branch-name>
+    
+    - fast-forward merge is letting master or any other branch(the pointer) to catch up to the other branch that you are working on. which makes master and <branch-name> pointing to the same commit, until they diverge again.
+    - merge commit is git perform a new commit on the master branch and prompt you for a message. This happens when somebody made some changes and submit a commit on the master branch and you would like to merge your branch with the master branch but the master branch is one or more commit ahead of your branch.
+    
+    -merge conflict: 
+        - Resolving conflicts:
+            1. open up the file with merge conflicts
+            2. edit the file to remove the conflicts. Decide which branch's content you want to keep in each conflict. Or keep the content from both.
+            3. Remove the conflict "markers" in the document
+            4. Add your changes and then make a commit!
+            
