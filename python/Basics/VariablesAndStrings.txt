@@ -1,11 +1,11 @@
-####Variables#####
+#### Variables #####
 - snake_case for variable
 - CAPITAL_SNAKE_CASE refers to constants (eg: PI = 3.1415)
 - UpperCamelCase refers to a class
 - _no_touchy_ variables that start and end with two underscores are called "dunder" for Double UNDERscore, are supposed to be private or left alone
 - !!Never use reserved data types key word as a variable name!!
 
-####Date Types###
+#### Date Types ###
 - bool => True or False
 - int => integer 1,2 or 3
 - str => string "Nana"
@@ -19,7 +19,7 @@
 - Escape sequence: to make a new line or skip the ' or " by using "\"
 - for \ to show up properly => \\ instead of a single \
 
-#####String Concatenation#####
+##### String Concatenation #####
     str_one = "hello"
     str_two = "world"
     str_three = str_one + " " + str_two => "hello world"
@@ -27,7 +27,7 @@
     name += " lau"
     => name = "nana lau"
 
-#####Formatting Strings#####
+##### Formatting Strings #####
 - interpolate variables: F-Strings
     guess = 8
     name = "nana"
@@ -52,13 +52,13 @@
     print(formatted)
     => "First Name: nana, Last Name: lau"
 
-#####String Indexes#####
+##### String Indexes #####
 - "lol"[0] => 'l'
 - name = "Chuck"
     name[0] => 'C'
     name[-1] => 'k'
 
-#####Converting Data Types#####
+##### Converting Data Types #####
 - In string interpolation, data types are implicitly converted into string form with F-Strings
 - We can also explicitly convert variables by using the name of the built-in type as a function
     - decimal = 12.5464565874
@@ -67,7 +67,7 @@
     - my_list = [1, 2, 3]
         my_list_as_a_string = str(my_list) => "[1, 2, 3]"
 
-#####Making a Converter#####
+##### Making a Converter #####
 - Some useful functions: 
     - some_variable = input()  => to get the input from client
     - round(thing to round, how many decimal points)

@@ -1,4 +1,4 @@
-####Rules for math order#####
+#### Rules for math order #####
 - Parentesis
 - Exponential
 - Multiply
@@ -8,7 +8,7 @@
 
 - to comment, use control + /
 
-####Special operator#####
+#### Special operator #####
 - exponential power => **
 - modulo => % 
     (10 % 3 = 1)

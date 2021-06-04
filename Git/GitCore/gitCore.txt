@@ -1,62 +1,82 @@
 Git Core - From Intro to Git to Merging
 
-#####Basic Info About Git#####
-- Git - The world's most popular Version Control System(VCS)
-- Version Control is software that tracks and manages changes to files over time.
-- Other well known version control system include Subversion, CVS, and Mercurial
-- Git != Github
+##### Basic Info About Git #####
+    - Git - The world's most popular Version Control System(VCS)
+    - Version Control is software that tracks and manages changes to files over time.
+    - Other well known version control system include Subversion, CVS, and Mercurial
+    - Git != Github
 
-#####Configuring Git Name and Email#####
-> git config --global user.name "Nana Lau"
-> git config --global user.email nanalau315@hotmail.com
+##### Configuring Git Name and Email #####
+    > git config --global user.name "Nana Lau"
+    > git config --global user.email nanalau315@hotmail.com
 
-#####GitKraken as a Git GUI#####
-- I am probably not going to use it...
+##### GitKraken as a Git GUI #####
+    - I am probably not going to use it...
 
-#####Basic Git command#####
-> git status => gives information on the current status of a git repository and its content
-> git inti => initialize empty git repository in your desire folder so git can keep track of it as a whole
-> git add <filename> <filename2> => picked out the files that you worked on and stage them
-> git add . => will stage all modified or newly created files at the same time
-> git commit -m <"commit message"> => will commit all staged changes with the commit message that you entered, which summarizes the changes and work snapshotted in the commit.
-> git log => a log of all the changes thats made in the repository
+##### Basic Git command #####
+    > git status => gives information on the current status of a git repository and its content
+    > git inti => initialize empty git repository in your desire folder so git can keep track of it as a whole
+    > git add <filename> <filename2> => picked out the files that you worked on and stage them
+    > git add . => will stage all modified or newly created files at the same time
+    > git commit -m <"commit message"> => will commit all staged changes with the commit message that you entered, which summarizes the changes and work snapshotted in the commit.
+    > git log => a log of all the changes thats made in the repository
 
-#####The mysterious .git folder#####
-- it is the history of git, thats why it is hidden and you should never mess with it (unless if you want to remove the repository status completely, then you can go ahead and delete it)
+##### The mysterious .git folder #####
+    - it is the history of git, thats why it is hidden and you should never mess with it (unless if you want to remove the repository status completely, then you can go ahead and delete it)
 
-#####A Common Early Git Mistake#####
-- DO NOT INIT A  REPO INSIDE OF A REPO!!!
-- do a git status if you are unsure if you are inside a git repository
+##### A Common Early Git Mistake #####
+    - DO NOT INIT A  REPO INSIDE OF A REPO!!!
+    - do a git status if you are unsure if you are inside a git repository
 
-#####Atomic Commits#####
-- a commit should emcompass a single feature, change, or fix. Try to keep each commit focused on a single thing. Which makes the project much easier to undo or rollback changes later on. It will also make your code much easier to review.
+##### Atomic Commits #####
+    - a commit should emcompass a single feature, change, or fix. Try to keep each commit focused on a single thing. Which makes the project much easier to undo or rollback changes later on. It will also make your code much easier to review.
 
-#####Commit Messages in Present or Past Tense?#####
-- in big collaboration projects, Present tense will a more of a convention to follow. but in personal project, it doesn't really matter as it is more of the personaly preference
+##### Commit Messages in Present or Past Tense? #####
+    - in big collaboration projects, Present tense will a more of a convention to follow. but in personal project, it doesn't really matter as it is more of the personaly preference
 
-#####A Closer Look at the Git Log Command#####
-- Commit formatting
-    > git log --oneline => a shorthand for "--pretty=oneline --abbrev-commit" used together
-    - this is very useful when there is so much commit and you are just trying to find a single commmit with the first line of each commit
-    - there are many more to explore in the git docs!
+##### A Closer Look at the Git Log Command #####
+    - Commit formatting
+        > git log --oneline => a shorthand for "--pretty=oneline --abbrev-commit" used together
+        - this is very useful when there is so much commit and you are just trying to find a single commmit with the first line of each commit
+        - there are many more to explore in the git docs!
 
-#####Amending Commits#####
-- when you realized you forgot to include a file or there might be a typo in the commit message, you can "redo" the previous commit using the --amend option
-- the process:
-    > git commit -m "some commit"
-    > git add <filename>
-    > git commit --amend
-    > edit your commit in VCSode and then close edit commit file
+##### Amending Commits #####
+    - when you realized you forgot to include a file or there might be a typo in the commit message, you can "redo" the previous commit using the --amend option
+    - the process:
+        > git commit -m "some commit"
+        > git add <filename>
+        > git commit --amend
+        > edit your commit in VCSode and then close edit commit file
 
-#####Ignoring Files with .gitignore#####
-- We can tell Git which files and directories to ignore in a given repository, using a .gitignore file. This is useful for files you know you NEVER want to commit, including:
-    - Secrets, API keys, credentials, etc.
-    - Operating System files (.DS_Store on Mac)
-    - Log files
-    - Dependencies and Packages
-- where to put the .gitignore file? you can create it th eroot of a repository. Inside the file, we can write pattterns to tell Git which files and folders to ignore:
-    - .DS_Store will ignore files named .DS_Store
-    - folderName/ will ignore an entire directory
-    - *.log will ignore any files with the .log extension
-    - a really good website to use to see what should be include in the gitignore file for each and different language is toptal.com/developers/gitignore. you can just type what kind of project you are working on, then copy and paste the list into the gitignore file.
+##### Ignoring Files with .gitignore #####
+    - We can tell Git which files and directories to ignore in a given repository, using a .gitignore file. This is useful for files you know you NEVER want to commit, including:
+        - Secrets, API keys, credentials, etc.
+        - Operating System files (.DS_Store on Mac)
+        - Log files
+        - Dependencies and Packages
+    - where to put the .gitignore file? you can create it th eroot of a repository. Inside the file, we can write pattterns to tell Git which files and folders to ignore:
+        - .DS_Store will ignore files named .DS_Store
+        - folderName/ will ignore an entire directory
+        - *.log will ignore any files with the .log extension
+        - a really good website to use to see what should be include in the gitignore file for each and different language is toptal.com/developers/gitignore. you can just type what kind of project you are working on, then copy and paste the list into the gitignore file.
+
+##### Working with Branches #####
+    - In git, we are always working on a branch, the default branch name is usually master.
+    - HEAD is a pointer that refers to the current "location" in your repository. It points to a particular branch reference, or the latest commit on a particular branch. (what I am checking out on). Each tip of a branch will have a head, which points to the latest commit hash on that particulat branch (HEAD is like a bookmark on each branch) 
+        - refs/heads/<branch-name> => will hold the hash of the latest commit
+    - you can also configure any branch to be your master(default) branch as you wish
+    - where you branch from is very important and make a really big difference. so before you branch, please make sure where you are at is where you want to branch off from.
+    
+    > git branch => to view your existing branches.
+    > git branch <branch-name> => to make a new branch based upon the current head (this only create the branch, it doesn't switch you to that new branch you just create, which means the head stays the same)
+    > git switch <branch-name> => to switch to the new branch that you create. 
+    > git checkout <branch-name> => also switches you to another branch, but also do a lot more like restore working tree files.
+    > git switch -c <branch-name> => will create a new branch AND switch you to the newly created branch all on one go. (-c as short for create)
+    > git checkout -b <branch-name> => does the same thing as git switch -c <branch-name>
+
+##### Deleting, Moving and Renaming Branches #####
+    - to delete a branch, make sure you move out of the branch that you are going to delete or else it will throw an message
+    > git branch -d <branch-name> => will delete the branch after you gave merged it
+    > git branch -D <branch-name> => allow deleting the branch irrespective of its merged status. (Make sure you know what you are doing before using this command)
+    > git branch -m <new-branch-name> => rename the current branch you are currently on
 
