@@ -23,3 +23,27 @@ Next Level Git - From Diffing to Undoing Changes
 ##### Comparing Changes Across Commits #####
     > git diff commit1..commit2
 
+##### The Ins and Outs of Stashing #####
+    - git provides an easy way of stashing these uncommitted changes so that we can return to them later, without having to make unnecessary commits.
+    - git stash is super useful command that helps you save changes that you are not yet ready to commit. You can stash changes and then come back to them later.
+    - running git stash will take all uncommitted changes(staged and unstaged) and stash them, reverting the changes in your working copy.
+        > git stash / git stash save => save the changes but don't make a commit and you can get back to them
+        > git stash pop => to remove the most recently stashed changes in your stash and re-apply then to your working copy. (Kind of like cut and paste)
+        > git stash apply => to apply whatever is stashed away, without removing it from the stash. This can be useful if you want to apply stashed changes to multiple branches. It will apply the most recent stash when you run this command.
+    - stashing multiple times: 
+        > git stash 
+            do some other stuff
+        > git stash
+            do some other stuff
+        > git stash
+            do some other stuff
+    - viewing stashes:
+        > git stash list => will show a list of all the stashes you have stashed away
+    - recall a particular stash:
+        > git stash apply stash@{num}
+    - dropping stashes:
+        > git stash drop stash@{num}
+    - clear out all stashes:
+        > git stash clear
+
+        
