@@ -102,4 +102,3 @@ Git Core - From Intro to Git to Merging
             2. edit the file to remove the conflicts. Decide which branch's content you want to keep in each conflict. Or keep the content from both.
             3. Remove the conflict "markers" in the document
             4. Add your changes and then make a commit!
-            
