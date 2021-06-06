@@ -1,0 +1,90 @@
+Next Level Git - From Diffing to Undoing Changes
+
+##### Introducing the Git Diff Command #####
+    - use the git diff command to view changes between commits, branches, files, our working direcctory, and more.
+    - we often use git diff alongside commands like git status and git log, to get a better picture of a repository and how it has changed over time.
+    
+    > git diff => list all the changes in our working directory that are NOT staged for the next commit
+
+    - for a better understanding of reading diff, watch section 8, video 3 for a complete and through explanation
+
+##### Viewing Unstaged Changes #####
+    > git diff => compares staging area and working directory
+    > git diff HEAD => lists all changes in the working tree since your last commit
+    > git diff --stage OR git diff --cached => list the changes between the staging area and out last commit (show me what will be included in my commit if I run git commit right now)
+
+##### Diffing Specific Files #####
+    > git diff HEAD <filename> => list all changes, staged or unstaged since the last commit in that file
+    > git diff --staged <filename> => list all changes in that file that is staged 
+
+##### Comparing Changes Across Branches #####
+    > git diff branch1..branch2 
+
+##### Comparing Changes Across Commits #####
+    > git diff commit1..commit2
+
+##### The Ins and Outs of Stashing #####
+    - git provides an easy way of stashing these uncommitted changes so that we can return to them later, without having to make unnecessary commits.
+    - git stash is super useful command that helps you save changes that you are not yet ready to commit. You can stash changes and then come back to them later.
+    - running git stash will take all uncommitted changes(staged and unstaged) and stash them, reverting the changes in your working copy.
+        > git stash / git stash save => save the changes but don't make a commit and you can get back to them
+        > git stash pop => to remove the most recently stashed changes in your stash and re-apply then to your working copy. (Kind of like cut and paste)
+        > git stash apply => to apply whatever is stashed away, without removing it from the stash. This can be useful if you want to apply stashed changes to multiple branches. It will apply the most recent stash when you run this command.
+    - stashing multiple times: 
+        > git stash 
+            do some other stuff
+        > git stash
+            do some other stuff
+        > git stash
+            do some other stuff
+    - viewing stashes:
+        > git stash list => will show a list of all the stashes you have stashed away
+    - recall a particular stash:
+        > git stash apply stash@{num}
+    - dropping stashes:
+        > git stash drop stash@{num}
+    - clear out all stashes:
+        > git stash clear
+
+##### Undoing Changes & Time Travelling #####
+    - We can use git checkout to create branches, switch to new branches, restore files, and undo history.
+        > git checkout commit <commit-hash> => to view a previous commit. (we can use the git log command to view commit hashes, we just need the first 7 digits of a commit hash)
+    - this will bring you to a status of a detached-head.
+    - we can either re-atttach head:
+        > git switch <branch-name>
+    - or we can create and switch to a new branch to re-attach head (make the HEAD to have a reference again)
+        > git switch -c <new-branch-name>
+
+##### Referencing Commits Relative to HEAD #####
+    - git checkout supports a slightly odd syntax for referencing previous commits relative to a particular commit.
+        - HEAD~1 => refers to the commit before HEAD(parent)
+        - HEAD~2 => refers to 2 commits before HEAD(grandparent)
+            > git checkout HEAD~{num}
+        - to get out of the checkout mode/detached HEAD mode, simply switch to another branch, or:
+            > git switch - => will switch you back to where you were before
+##### Discarding changes #####
+    - suppose you have made some changes to a file but don't want to keep them. To revert the file back to whatever it looked like when you last committed, you can use:
+        > git checkout HEAD <filename> => discard any changes in that filem reverting back to the HEAD.
+    - another shorter option to revert a file, rather than typing HEAD, you can substitute -- followed by the file(s) you want to restore.
+        > git checkout -- <file>
+
+##### Un-modifying with Git Restore #####
+    - suppose you have made some changes to a file since your last commit. You have saved the file but then realized you definitely do NOT want those changes anymore! To restore the file to the contents in the HEAD, you can do:
+        > git restore <filename> => to restore the file back to the most recent commit
+        > git restore --source {HEAD~num or any-commit-hash} <filename>
+
+##### Unstaging Files with Restore #####
+    - if you have accidentally added a file to your staging area with git add and you don't wish to include it in the next commit, you can use git restore to remove it from staging
+        > git restore --staged <filename>
+
+##### Git Reset #####
+    - suppose you made a couple commits on the master branch, but you actually meant to make them on a seperate branch instead. To undo those commits, you can use git reset.
+        > git reset <commit-hash> => will reset the repo back to a specific commit. The commits will be gone. You can create a new branch and switch all those extra stuff to the new branch that you create and create a new commit on the new branch. (If you switch back to the master branch, you can see that everything had been unchanged, and all new changes will be switched to the new branch.)
+    - if you want to undo both the commits AND the actual changes in your files, you can use the --hard option.
+        > git reset --hard <commit-hash>
+
+##### Reverting Commits with Git Revert #####
+    - git revert is similar to git rest in that they both "unodo" changes, but they accomplish it in different ways.
+    - git reset actually moves the branch pointer backwards, eliminating commits.
+    - git revert creates a brand new commit which reverses/undos the changes from a commit. Because it results in a new commit, you will be prompted to enter a commit message.
+        > git revert <commit-hash>
