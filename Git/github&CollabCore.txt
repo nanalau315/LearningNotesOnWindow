@@ -1,1 +1,77 @@
 Github and Collab Core - From Github Intro to Collaborative Workflows
+
+##### Git Clone #####
+    - Git will retrieve all the files associated with the repository and will copy them to your local machine.
+    - Git will initializes a new repository on your machine, giving you access to the full git history of the cloned project
+    - got to your desire location to carry out this clone command to create the new repo on that particular spot you were at
+    - you can clone any hosted repo that you can see on Github, gitlab or any other host 
+        > git clone <url>
+
+##### SSH Config #####
+    - you need to be authenticated on Github to do certain operations, like pushing up code form you local machine. Your terminal will prompt you every single time for your Github email and password, unless you generate and configure an SSH key! Once configured, you can connect to github without having to supply your username/password.
+    - for the direction on creating a SSH key, you can go here: https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+
+##### Creating Our First Github Repo #####
+    - Option 1: if you already have an existing repo locally that you want to get on Github:
+        - create a new repo on Github
+        - Connect your local repo (add a remote)
+        - Push up your changes to Github
+    - Option 2: if you haven't begun work on your local repo, you can:
+        - create a brand new repo on Github
+        - clone it down to your machine
+        - do some work locally
+        - push up your changes to Github
+
+##### Git Remotes #####
+    - Before we can push anything up to github, we need to tell git about our remote repository on Github. We need to setup a "destination" to push up to.
+    - In git, we refer to these "destinations" as remotes. Each remote is simply a URL where a hosted repository lives.
+    - A remote is really two things: a URL and a label. To add a new remote, we need to provide both to Git:
+        > git remote add <name> <url>
+            (> git remote add origin https://github.com/blah/repo.git)
+    - Origin is a conventional Git remote name, but it is not at all special. It's just a name for a URL. When we clone a githuhb repo, the default remote name setup for us is called origin. You can change it. Most people leave it.
+        > git remote -v => to view your remotes after you set it up
+    - some uncommonly use remote commands:
+        > git remote rename <old> <new>
+        > git remote remove <name>
+        
+##### Git Push #####
+    - now that we have a remote set up, let's push some work up to Github! To do this, we need to use the git push command.
+    - we need to specify the remote we want to push up to AND the specific local branch we want to push up to that remote.
+        > git push <remote> <branch>
+        > git push <remote> <local-branch>:<remote-branch> => to push a local branch to a remote branch that have a different branch name
+
+##### Git Push -U #####
+    - The -u option allows us to set the upstream of the branch we're pushing. You can think of this as a link connecting our local branch to a branch on Github.
+    - what the above line means is that once we have set the upstream for a branch, we can use the git push shorthand which will push our current branch to the upstream. (so next time we push, we can do git push instead)
+        > git push -u origin master => to set the up-stream of your branch so you can do git push next time when you push
+
+##### Another github workflow: cloning first #####
+    - Option 2: Start from Scratch:
+        - create a brand new repo on Github
+        - clone it down to your machine
+        - do some work locally
+        - push up your changes to Github
+
+##### Rename your branch name #####
+    > git branch -M <name(ususally main)>
+
+##### Remote Tracking BRanches #####
+    - Remote tracking branches: at the time you last communicated with this remote repository, here is where x branch was pointing
+    - they follow this pattern <remote>/<branch>
+        - origin/master => references the state of the master branch on the remote repo named origin.
+        - upstream/logoRedesign => references the state of the logo Redesign branch on the remote named upstream (a common remote name)
+    - To view the remote branches that our local repository knows about:
+        > git branch -r
+    - To checkout these remote branch pointers: 
+        > git checkout origin/master
+
+##### Working with Remote Branches #####
+    - you will not be able to see all of the branches available when you first git clone a repo and you do git branch -r. So, when you want to work on a specific branch on your local machine that you don't yet have on your computer, you can do:
+        > git switch <branch-name>
+    - an old way of doing it: 
+        > git checkout --track origin/<branch-name>
+
+##### Git Fetch #####
+    - Fetching allows us to download changes from a remote repository, but those changes will not be automatically integrated into our working files. it lets you see what others have been working on, without having to merge those changes into your local repo.
+        > git fetch <remote> => fetches branches and history from a specific remote repository. It only updates remote tracking branches. It would fetch all changes from the origin remote repository.
+        > git fetch <remote> <branch> => would retrieve the latest information from the master branch on the origin remote repository
