@@ -74,4 +74,31 @@ Github and Collab Core - From Github Intro to Collaborative Workflows
 ##### Git Fetch #####
     - Fetching allows us to download changes from a remote repository, but those changes will not be automatically integrated into our working files. it lets you see what others have been working on, without having to merge those changes into your local repo.
         > git fetch <remote> => fetches branches and history from a specific remote repository. It only updates remote tracking branches. It would fetch all changes from the origin remote repository.
-        > git fetch <remote> <branch> => would retrieve the latest information from the master branch on the origin remote repository
+        > git fetch <remote> <branch> => would retrieve the latest information from the master branch on the origin remote repository.
+    - to take a look at what changes was made on the newly fetched data, you can do:
+        > git checkout <remote(origin)>/<branch>
+
+##### Git Pull #####
+    - git pull is another command we can use to retrieve changes from a remote repository. unlike fetch, pull actually updates our HEAD branch with whatever changes are retrieved from the remote.
+    - git pull = git fetch(update the remote tracking branch with the latest changes from the remote repository) + git merge(update my current branch with whatever changes are on the remote tracking branch)
+    - to pull, we specify the particular remote and branch we want to pull using:
+        > git pull <remote> <branch>
+    - just like with git merge, it matters WHERE we run this command from. Whatever branch we run it from is where the changes will be merged into.
+    - git pull origin master would fetch the latest information from the origin's master branch and merge those changes into our current branch.
+    - always pull and make sure there will be no conflicts between your current files and the remote on github. then after that you can git push.
+    - If we run git pull without specifying a particular remote or branch  to pull from, git assumes the following:
+        - remote will default to origin
+        - branch will default to whatever tracking connection is configured for your current branch. (This behavior can be configured, and tracking connections can be changed manually. Most people don't mess with that stuff!)
+        > git pull when the branch is connected with origin/branch
+
+##### Difference between git fetch and git pull #####
+    - git fetch:
+        - get changes from remote branch(es)
+        - updates the remote-tracking branches with the new changes
+        - does not merge changes onto your current HEAD branch
+        - safe to do at anytime
+    - git pull:
+        - gets changes from remote branch(es)
+        - updates the current branch with the new changes, merging them in
+        - can result in merge conflicts
+        - NOT recommended if you have uncommitted changes!
