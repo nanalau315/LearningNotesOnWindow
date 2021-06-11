@@ -102,3 +102,33 @@ Github and Collab Core - From Github Intro to Collaborative Workflows
         - updates the current branch with the new changes, merging them in
         - can result in merge conflicts
         - NOT recommended if you have uncommitted changes!
+
+##### Some Basic Settings of a Github Repo #####
+    - public vs private
+    - adding github collaborators in Settings
+    - READMEs: if you put a README in the root of your project, github will recognize it and automatically display it on the repo's home page
+    - READMEs.md: they are Markdown files, ending with the .md extension. Markdown is a convenient syntax to generate formatted text.
+
+##### Markdown CRASH COURSE #####
+    - check this link out for markdown cheat sheet: https://markdown-it.github.io/
+
+##### Github gists #####
+    - Github gists are a simple way to chare codce sssnippets and useful fragments with others. Gists are much easier to create, but offer far less features than a typical Github repository.
+
+##### Github Pages #####
+    - Github pages are public webpages that are hosted and published via github. They allow you to create a website simply by pushing your code to github
+    - github pages is a hosting service for static webpages, so it does not support server-side code like python, ruby, or node. Just HTML/CSS/JS!
+    - User Site: You get one user site per Github account. This is where you could host a pportfolio site or some form of personal website. The default url is based on your github username, following this pattern: username.github.io. Though you can change this!
+    - project sites: you get unlimited project sites! Each github repo can have a corresponding hosted website. It's as simple as telling Github which specific branch contains the web content. The default url follow this pattern: username.github.io/repo-name
+
+##### Setting up Github pages #####
+    - make a new repository
+    - go to the settings of the repository
+    - scroll down to look for the section name GitHub Pages
+    - select a branch that you want to be hosted that contain an index.html. Most people name the website branch name to be: gh-pages.
+    - select /root or /doc depending on where is your index.html is located.
+    - Done!
+
+##### Github Collaboration Workflow #####
+    - watch section 14 in course for this part
+
