@@ -59,3 +59,44 @@ Git: The Other Parts - From Rebasing to Custom Aliases and More
     - By default, the gut push command doesn't transfer tags to remote servers. If you have a lot of tags that you want to push up at once, you ccan use the --tags option to the git push command. This will transfer all of your tags to the remote server that are not already there.
         > git push --tags => to push up all tags
         > git push <remote> <tagname> => to push up a single tag
+
+##### Git behind the Scene #####
+    - Inside the .git folder: 
+        - config: the config is for configutaion. we can config things on a local or global settings in the config file.
+        - Refs folder: inside of refs, you will find a heads directory. refs/head contains one file per branch in a repository. Each file is named after a branch and contains the hash of the commit at the tip of the branch. For example refs/heads/master contains the commit hash of the last commit on the master branch. Refs also contains a refs/tags folder which contains one file for each tag in the repo
+        - HEAD: just a text file that keeps track of where HEAD points. It if contains refs/heads/master, this means that HEAD is pointing to the master branch. In detached HEAD, the HEAD file contains a commit hash instead of a branch reference.
+        - objects: the object directory contains all the repo files. This is where git stores the backups of files, the commits in a repo, and more. The files are all ccompressed and encrypted, so they won't look like much.
+
+##### hashing #####
+    - Hashing functions are functions that map input data of some arbitrary size to fixed-size output values.
+    - cryptographic hash function: 
+        1. one-way function which is infeasible to invert
+        2. small change in input yields large change in the output
+        3. deterministic - same input yields same output
+        4. unlikely to find 2 outputs with same value
+    - git uses a hashing function call SHA-1 (thought this is set to change eventually).
+        - SHA-1 always generates 40 digit hexadecimal numbers
+        - the commit hashes we have seen a million times are the output of SHA-1
+
+##### Git database #####
+    - git is a key-value data store. We can insert any kind of content into a git repository, and git will hand us back a unique key we can later use to retrieve that content. These keys that we get back are SHA-1 checksums
+    - Hashing with Git hash-object: 
+        > echo "<any-word>" | git hash-object --stdin
+    - Hashing with Git hasing-object and save in the .git/objects file:
+        > echo "<any-word>" | git hash-object --stdin -w
+    - Retrieving data: 
+        > git cat-file -p <hash>
+    - Retrieving data and store them in a specific file
+        > git cat-file -p <hash> > <filename>
+
+##### Blobs #####
+    - git blobs (binary large object) are the obnject type git uses to store the contents of files in a given repository. Blobs don't even include the filenames of each file or any other data. They just store the contents of a file
+
+##### Trees #####
+    - trees are git objects used to store the contents of a directory. Each tree contains pointers that can refer to blobs and to other trees. Each entry in a tree contains the SHA-1 hash of a blob or tree, as well as the mode, type, and filename.
+        > git cat-file -p master^{tree} => shows us the most recent tree
+        > git cat-file -t <hash> => shows you if it is a tree or a blob
+
+##### Commits #####
+    - commits objects combine a tree object along with information about the context that led to the current tree. Commits store a reference to parent commit(s), the author, the commiter, and of couse the commit message! (commit points to a tree)
+
