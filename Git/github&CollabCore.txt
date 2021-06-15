@@ -55,7 +55,7 @@ Github and Collab Core - From Github Intro to Collaborative Workflows
 ##### Rename your branch name #####
     > git branch -M <name(ususally main)>
 
-##### Remote Tracking BRanches #####
+##### Remote Tracking Branches #####
     - Remote tracking branches: at the time you last communicated with this remote repository, here is where x branch was pointing
     - they follow this pattern <remote>/<branch>
         - origin/master => references the state of the master branch on the remote repo named origin.
@@ -113,7 +113,7 @@ Github and Collab Core - From Github Intro to Collaborative Workflows
     - check this link out for markdown cheat sheet: https://markdown-it.github.io/
 
 ##### Github gists #####
-    - Github gists are a simple way to chare codce sssnippets and useful fragments with others. Gists are much easier to create, but offer far less features than a typical Github repository.
+    - Github gists are a simple way to share code snippets and useful fragments with others. Gists are much easier to create, but offer far less features than a typical Github repository.
 
 ##### Github Pages #####
     - Github pages are public webpages that are hosted and published via github. They allow you to create a website simply by pushing your code to github
