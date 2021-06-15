@@ -130,3 +130,27 @@ Git: The Other Parts - From Rebasing to Custom Aliases and More
     - second: 
         > git reset --hard <commit-hash>
 
+##### Global Git Config #####
+    - Git looks for the global config file at either ~/.gitconfig or ~/.config/git/config. Any configuration variables that we change in the file will be applied across all Git repos.
+    - We can also alter configuration vatiables from the command line if prefered.
+
+##### Git Alias #####
+    - we can easily set up Git aliases to make our git experience a but simpler and faster. for example, we could define an alias "git ci" instead of having to type "git commit". Or, we could define a custom git lg command that prints out a custom formatted commit log
+    - inside the .gitconfig file, under [alias], write your desire command that shortform the regular longform git command, like:
+        [alias]
+            s = status => to shortform for git status
+            l = log => to shortform git log
+
+##### Setting Aliases From the Command Line #####
+    > git config --global alias.<the shortform you want> <the command that you want to make alias for>
+
+##### Aliases with Arguments #####
+    - inside the .gitconfig file, do:
+        [alias]
+            cm = commit -m
+            a = add
+
+##### Nice Alias To Have #####
+    - https://github.com/GitAlias/gitalias
+    - https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+    - https://gist.github.com/mwhite/6887990
